@@ -1,7 +1,7 @@
 name: mcp_schema_generator
 resolution: workspace
 description: Annotation-driven Model Context Protocol (MCP) server code generator. Eliminates boilerplate by automatically generating schemas.
-version: 1.0.0-beta.2
+version: 1.0.0-beta.3
 repository: https://github.com/rohit-chouhan/mcp_schema_generator
 issue_tracker: https://github.com/rohit-chouhan/mcp_schema_generator/issues
 topics:
@@ -15,8 +15,8 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
-  mcp_schema_annotations: ^1.0.0-beta.1
-  mcp_schema_runtime: ^1.0.0-beta.1
+  mcp_schema_annotations: ^1.0.0-beta.3
+  mcp_schema_runtime: ^1.0.0-beta.3
   source_gen: ^4.2.3
   analyzer: ^10.2.0
   build: ^4.0.6

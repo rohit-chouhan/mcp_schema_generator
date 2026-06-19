@@ -21,11 +21,11 @@ Add the dependencies to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  mcp_schema_annotations: ^1.0.0-beta.1
-  mcp_schema_runtime: ^1.0.0-beta.1
+  mcp_schema_annotations: ^1.0.0-beta.3
+  mcp_schema_runtime: ^1.0.0-beta.3
 
 dev_dependencies:
-  mcp_schema_generator: ^1.0.0-beta.1
+  mcp_schema_generator: ^1.0.0-beta.3
   build_runner: ^2.15.0
 ```
 

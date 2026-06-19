@@ -1,3 +1,7 @@
+## 1.0.0-beta.3
+
+- Update dependencies and version bump.
+
 ## 1.0.0-beta.1
 
 - Initial MVP Release.

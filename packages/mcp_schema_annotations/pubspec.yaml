@@ -1,7 +1,7 @@
 name: mcp_schema_annotations
 resolution: workspace
 description: Annotations for declaring Model Context Protocol (MCP) servers, tools, and resources in Dart and Flutter.
-version: 1.0.0-beta.1
+version: 1.0.0-beta.3
 repository: https://github.com/rohit-chouhan/mcp_schema_generator
 issue_tracker: https://github.com/rohit-chouhan/mcp_schema_generator/issues
 topics:

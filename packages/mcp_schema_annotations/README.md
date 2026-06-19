@@ -10,7 +10,7 @@ Annotation package for MCP Schema Generator.
 
 ```yaml
 dependencies:
-  mcp_schema_annotations: ^1.0.0-beta.1
+  mcp_schema_annotations: ^1.0.0-beta.3
 ```
 
 ## Available Annotations

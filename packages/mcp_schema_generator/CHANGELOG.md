@@ -1,3 +1,7 @@
+## 1.0.0-beta.3
+
+- Update dependencies and version bump.
+
 ## 1.0.0-beta.2
 
 - Refactored dependencies to use newly published `mcp_schema_annotations` and `mcp_schema_runtime`.

@@ -10,7 +10,7 @@ Runtime metadata models used by MCP Schema Generator.
 
 ```yaml
 dependencies:
-  mcp_schema_runtime: ^1.0.0-beta.1
+  mcp_schema_runtime: ^1.0.0-beta.3
 ```
 
 ## Included Types
