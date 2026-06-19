@@ -9,11 +9,7 @@ class McpServer {
   /// The optional description of the server.
   final String? description;
 
-  const McpServer({
-    this.name,
-    this.version,
-    this.description,
-  });
+  const McpServer({this.name, this.version, this.description});
 }
 
 /// Marks a method as an MCP tool.
@@ -27,11 +23,7 @@ class McpTool {
   /// Optional tags for the tool.
   final List<String>? tags;
 
-  const McpTool({
-    this.name,
-    this.description,
-    this.tags,
-  });
+  const McpTool({this.name, this.description, this.tags});
 }
 
 /// Parameter metadata for MCP tools.
@@ -90,8 +82,5 @@ class McpPrompt {
   /// The description of the prompt.
   final String? description;
 
-  const McpPrompt({
-    this.name,
-    this.description,
-  });
+  const McpPrompt({this.name, this.description});
 }

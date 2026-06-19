@@ -9,7 +9,10 @@ import 'package:mcp_annotations/mcp_annotations.dart';
 class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
   @override
   String generateForAnnotatedElement(
-      Element element, ConstantReader annotation, BuildStep buildStep) {
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
+  ) {
     if (element is! ClassElement) {
       throw InvalidGenerationSourceError(
         '@McpServer can only be applied to classes.',
@@ -21,7 +24,7 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
     final buffer = StringBuffer();
 
     buffer.writeln('extension ${className}McpExtension on $className {');
-    
+
     _generateTools(element, buffer);
     _generateResources(element, buffer);
     _generatePrompts(element, buffer);
@@ -38,7 +41,9 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
   }
 
   DartObject? _getAnnotation(Element element, String annotationName) {
-    final checker = TypeChecker.fromUrl('package:mcp_annotations/src/mcp_annotations_base.dart#$annotationName');
+    final checker = TypeChecker.fromUrl(
+      'package:mcp_annotations/src/mcp_annotations_base.dart#$annotationName',
+    );
     return checker.firstAnnotationOf(element);
   }
 
@@ -50,7 +55,9 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
 
     final docComment = element.documentationComment;
     if (docComment != null) {
-      return docComment.replaceAll(RegExp(r'^///\s?', multiLine: true), '').trim();
+      return docComment
+          .replaceAll(RegExp(r'^///\s?', multiLine: true), '')
+          .trim();
     }
     return '';
   }
@@ -62,7 +69,10 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
     for (var method in element.methods) {
       final toolAnnotation = _getAnnotation(method, 'McpTool');
       if (toolAnnotation != null) {
-        final name = toolAnnotation.getField('name')?.toStringValue() ?? method.name ?? '';
+        final name =
+            toolAnnotation.getField('name')?.toStringValue() ??
+            method.name ??
+            '';
         final description = _extractDescription(method, toolAnnotation);
 
         if (toolNames.contains(name)) {
@@ -84,29 +94,33 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
 
         for (var param in method.formalParameters) {
           _generateParameterSchema(param, buffer);
-          
+
           final paramAnnotation = _getAnnotation(param, 'McpParam');
           bool isRequired = true;
-          
+
           if (paramAnnotation != null) {
-             final requiredField = paramAnnotation.getField('required');
-             if (requiredField != null && !requiredField.isNull) {
-               isRequired = requiredField.toBoolValue()!;
-             } else {
-               isRequired = param.type.nullabilitySuffix != NullabilitySuffix.question;
-             }
+            final requiredField = paramAnnotation.getField('required');
+            if (requiredField != null && !requiredField.isNull) {
+              isRequired = requiredField.toBoolValue()!;
+            } else {
+              isRequired =
+                  param.type.nullabilitySuffix != NullabilitySuffix.question;
+            }
           } else {
-             isRequired = param.type.nullabilitySuffix != NullabilitySuffix.question;
+            isRequired =
+                param.type.nullabilitySuffix != NullabilitySuffix.question;
           }
-          
+
           if (isRequired && param.name != null && param.name!.isNotEmpty) {
-             requiredParams.add(param.name!);
+            requiredParams.add(param.name!);
           }
         }
 
         buffer.writeln('        },');
         if (requiredParams.isNotEmpty) {
-          buffer.writeln('        \'required\': [${requiredParams.map((p) => '\'$p\'').join(', ')}],');
+          buffer.writeln(
+            '        \'required\': [${requiredParams.map((p) => '\'$p\'').join(', ')}],',
+          );
         }
         buffer.writeln('      },');
         buffer.writeln('    ),');
@@ -126,17 +140,26 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
     for (var method in element.methods) {
       final resourceAnnotation = _getAnnotation(method, 'McpResource');
       if (resourceAnnotation != null) {
-        final uriTemplate = resourceAnnotation.getField('uriTemplate')?.toStringValue();
-        if (uriTemplate == null || uriTemplate.isEmpty || !uriTemplate.contains('://')) {
+        final uriTemplate = resourceAnnotation
+            .getField('uriTemplate')
+            ?.toStringValue();
+        if (uriTemplate == null ||
+            uriTemplate.isEmpty ||
+            !uriTemplate.contains('://')) {
           throw InvalidGenerationSourceError(
             'Invalid uriTemplate "$uriTemplate". It must be non-empty and contain "://".',
             element: method,
           );
         }
 
-        final name = resourceAnnotation.getField('name')?.toStringValue() ?? method.name ?? '';
+        final name =
+            resourceAnnotation.getField('name')?.toStringValue() ??
+            method.name ??
+            '';
         final description = _extractDescription(method, resourceAnnotation);
-        final mimeType = resourceAnnotation.getField('mimeType')?.toStringValue();
+        final mimeType = resourceAnnotation
+            .getField('mimeType')
+            ?.toStringValue();
 
         if (resourceNames.contains(name)) {
           throw InvalidGenerationSourceError(
@@ -159,7 +182,9 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
 
     buffer.writeln('  ];');
     buffer.writeln('  Map<String, ResourceDefinition> get mcpResourceMap => {');
-    buffer.writeln('    for (final resource in mcpResources) resource.name: resource,');
+    buffer.writeln(
+      '    for (final resource in mcpResources) resource.name: resource,',
+    );
     buffer.writeln('  };');
   }
 
@@ -170,7 +195,10 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
     for (var method in element.methods) {
       final promptAnnotation = _getAnnotation(method, 'McpPrompt');
       if (promptAnnotation != null) {
-        final name = promptAnnotation.getField('name')?.toStringValue() ?? method.name ?? '';
+        final name =
+            promptAnnotation.getField('name')?.toStringValue() ??
+            method.name ??
+            '';
         final description = _extractDescription(method, promptAnnotation);
 
         if (promptNames.contains(name)) {
@@ -188,8 +216,12 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
 
         for (var param in method.formalParameters) {
           final paramName = param.name;
-          final paramDesc = _extractDescription(param, _getAnnotation(param, 'McpParam'));
-          final isRequired = param.type.nullabilitySuffix != NullabilitySuffix.question;
+          final paramDesc = _extractDescription(
+            param,
+            _getAnnotation(param, 'McpParam'),
+          );
+          final isRequired =
+              param.type.nullabilitySuffix != NullabilitySuffix.question;
           final typeString = _getPromptArgumentTypeString(param.type);
 
           buffer.writeln('        PromptArgument(');
@@ -221,32 +253,41 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
     return 'object';
   }
 
-  void _generateParameterSchema(FormalParameterElement param, StringBuffer buffer) {
+  void _generateParameterSchema(
+    FormalParameterElement param,
+    StringBuffer buffer,
+  ) {
     buffer.writeln('          \'${param.name}\': {');
-    
+
     final paramAnnotation = _getAnnotation(param, 'McpParam');
     if (paramAnnotation != null) {
-       final desc = paramAnnotation.getField('description')?.toStringValue();
-       if (desc != null) buffer.writeln('            \'description\': \'$desc\',');
-       
-       final minObj = paramAnnotation.getField('minimum');
-       final min = minObj?.toDoubleValue() ?? minObj?.toIntValue();
-       if (min != null) buffer.writeln('            \'minimum\': $min,');
-       
-       final maxObj = paramAnnotation.getField('maximum');
-       final max = maxObj?.toDoubleValue() ?? maxObj?.toIntValue();
-       if (max != null) buffer.writeln('            \'maximum\': $max,');
-       
-       final pattern = paramAnnotation.getField('pattern')?.toStringValue();
-       if (pattern != null) buffer.writeln('            \'pattern\': r\'$pattern\',');
+      final desc = paramAnnotation.getField('description')?.toStringValue();
+      if (desc != null)
+        buffer.writeln('            \'description\': \'$desc\',');
+
+      final minObj = paramAnnotation.getField('minimum');
+      final min = minObj?.toDoubleValue() ?? minObj?.toIntValue();
+      if (min != null) buffer.writeln('            \'minimum\': $min,');
+
+      final maxObj = paramAnnotation.getField('maximum');
+      final max = maxObj?.toDoubleValue() ?? maxObj?.toIntValue();
+      if (max != null) buffer.writeln('            \'maximum\': $max,');
+
+      final pattern = paramAnnotation.getField('pattern')?.toStringValue();
+      if (pattern != null)
+        buffer.writeln('            \'pattern\': r\'$pattern\',');
     }
 
     _generateTypeSchema(param.type, buffer, indent: 12);
-    
+
     buffer.writeln('          },');
   }
 
-  void _generateTypeSchema(DartType type, StringBuffer buffer, {required int indent}) {
+  void _generateTypeSchema(
+    DartType type,
+    StringBuffer buffer, {
+    required int indent,
+  }) {
     final indentStr = ' ' * indent;
     if (type.isDartCoreString) {
       buffer.writeln('$indentStr\'type\': \'string\',');
@@ -260,23 +301,36 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
       buffer.writeln('$indentStr\'type\': \'array\',');
       buffer.writeln('$indentStr\'items\': {');
       if (type is ParameterizedType && type.typeArguments.isNotEmpty) {
-        _generateTypeSchema(type.typeArguments.first, buffer, indent: indent + 2);
+        _generateTypeSchema(
+          type.typeArguments.first,
+          buffer,
+          indent: indent + 2,
+        );
       }
       buffer.writeln('$indentStr},');
     } else if (type.element is EnumElement) {
-       buffer.writeln('$indentStr\'type\': \'string\',');
-       final enumElement = type.element as EnumElement;
-       final enumValues = enumElement.fields.where((f) => f.isEnumConstant).map((f) => f.name).toList();
-       buffer.writeln('$indentStr\'enum\': [${enumValues.map((e) => '\'$e\'').join(', ')}],');
+      buffer.writeln('$indentStr\'type\': \'string\',');
+      final enumElement = type.element as EnumElement;
+      final enumValues = enumElement.fields
+          .where((f) => f.isEnumConstant)
+          .map((f) => f.name)
+          .toList();
+      buffer.writeln(
+        '$indentStr\'enum\': [${enumValues.map((e) => '\'$e\'').join(', ')}],',
+      );
     } else {
-       final typeName = type.element?.name;
-       if (type.isDartAsyncStream || type.isDartAsyncFuture || typeName == 'Socket' || typeName == 'File' || typeName == 'HttpRequest') {
-         throw InvalidGenerationSourceError(
-           'Unsupported parameter type: ${type.toString()}',
-           element: type.element,
-         );
-       }
-       buffer.writeln('$indentStr\'type\': \'object\',');
+      final typeName = type.element?.name;
+      if (type.isDartAsyncStream ||
+          type.isDartAsyncFuture ||
+          typeName == 'Socket' ||
+          typeName == 'File' ||
+          typeName == 'HttpRequest') {
+        throw InvalidGenerationSourceError(
+          'Unsupported parameter type: ${type.toString()}',
+          element: type.element,
+        );
+      }
+      buffer.writeln('$indentStr\'type\': \'object\',');
     }
   }
 }

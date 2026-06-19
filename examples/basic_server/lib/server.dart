@@ -11,16 +11,12 @@ class User {
 @McpServer(name: 'analytics')
 class AnalyticsServer {
   @McpTool(description: 'Get user by ID')
-  Future<User> getUser(
-    @McpParam(minimum: 1) int id,
-  ) async {
+  Future<User> getUser(@McpParam(minimum: 1) int id) async {
     return User(id);
   }
 
   /// Returns current user profile.
-  @McpResource(
-    uriTemplate: 'users://{id}',
-  )
+  @McpResource(uriTemplate: 'users://{id}')
   Future<User> userResource() async {
     return User(1); // placeholder
   }

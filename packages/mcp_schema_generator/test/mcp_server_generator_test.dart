@@ -16,6 +16,4 @@ Future<void> main() async {
   );
 }
 
-const _expectedAnnotatedTests = [
-  'TestServer',
-];
+const _expectedAnnotatedTests = ['TestServer'];
