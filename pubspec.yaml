@@ -1,0 +1,11 @@
+name: mcp_schema_generator_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+
+workspace:
+  - packages/mcp_annotations
+  - packages/mcp_schema_generator
+  - packages/mcp_runtime
+  - examples/basic_server

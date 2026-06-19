@@ -1,0 +1,9 @@
+builders:
+  mcp_schema_generator:
+    target: ""
+    import: "package:mcp_schema_generator/mcp_schema_generator.dart"
+    builder_factories: ["mcpServerBuilder"]
+    build_extensions: { ".dart": [".mcp.g.part"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]

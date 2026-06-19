@@ -1,0 +1,58 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'server.dart';
+
+// **************************************************************************
+// McpServerGenerator
+// **************************************************************************
+
+extension AnalyticsServerMcpExtension on AnalyticsServer {
+  List<ToolDefinition> get mcpTools => [
+    ToolDefinition(
+      name: 'getUser',
+      description: 'Get user by ID',
+      inputSchema: {
+        'type': 'object',
+        'properties': {
+          'id': {'minimum': 1, 'type': 'integer'},
+        },
+        'required': ['id'],
+      },
+    ),
+  ];
+  Map<String, ToolDefinition> get mcpToolMap => {
+    for (final tool in mcpTools) tool.name: tool,
+  };
+  List<ResourceDefinition> get mcpResources => [
+    ResourceDefinition(
+      uriTemplate: 'users://{id}',
+      name: 'userResource',
+      description: 'Returns current user profile.',
+    ),
+  ];
+  Map<String, ResourceDefinition> get mcpResourceMap => {
+    for (final resource in mcpResources) resource.name: resource,
+  };
+  List<PromptDefinition> get mcpPrompts => [
+    PromptDefinition(
+      name: 'summarize',
+      description: 'Summarize given text.',
+      arguments: [
+        PromptArgument(
+          name: 'text',
+          description: '',
+          type: 'string',
+          required: true,
+        ),
+      ],
+    ),
+  ];
+  Map<String, PromptDefinition> get mcpPromptMap => {
+    for (final prompt in mcpPrompts) prompt.name: prompt,
+  };
+  McpDefinitions get mcpDefinitions => McpDefinitions(
+    tools: mcpTools,
+    resources: mcpResources,
+    prompts: mcpPrompts,
+  );
+}

@@ -1,0 +1,5 @@
+.dart_tool/
+.agents/
+/graphify-out
+build/
+coverage/

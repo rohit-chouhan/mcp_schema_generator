@@ -1,0 +1,4 @@
+name: mcp_schema_generator
+
+packages:
+  - packages/**
