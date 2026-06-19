@@ -262,8 +262,9 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
     final paramAnnotation = _getAnnotation(param, 'McpParam');
     if (paramAnnotation != null) {
       final desc = paramAnnotation.getField('description')?.toStringValue();
-      if (desc != null)
+      if (desc != null) {
         buffer.writeln('            \'description\': \'$desc\',');
+      }
 
       final minObj = paramAnnotation.getField('minimum');
       final min = minObj?.toDoubleValue() ?? minObj?.toIntValue();
@@ -274,8 +275,9 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
       if (max != null) buffer.writeln('            \'maximum\': $max,');
 
       final pattern = paramAnnotation.getField('pattern')?.toStringValue();
-      if (pattern != null)
+      if (pattern != null) {
         buffer.writeln('            \'pattern\': r\'$pattern\',');
+      }
     }
 
     _generateTypeSchema(param.type, buffer, indent: 12);
