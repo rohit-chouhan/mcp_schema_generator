@@ -1,5 +1,8 @@
 # mcp_schema_generator
 
+[![Pub Version](https://img.shields.io/pub/v/mcp_schema_generator)](https://pub.dev/packages/mcp_schema_generator)
+[![Pub Likes](https://img.shields.io/pub/likes/mcp_schema_generator)](https://pub.dev/packages/mcp_schema_generator)
+[![GitHub Issues](https://img.shields.io/github/issues/rohit-chouhan/mcp_schema_generator)](https://github.com/rohit-chouhan/mcp_schema_generator/issues)
 Annotation-driven MCP server generation for Dart & Flutter.
 
 Eliminates Model Context Protocol (MCP) boilerplate by generating tool registration, JSON schemas, parameter parsing, and error handling from simple Dart annotations.
