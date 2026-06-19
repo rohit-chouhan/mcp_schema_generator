@@ -20,8 +20,8 @@ Add the dependencies to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  mcp_annotations: ^1.0.0-beta.1
-  mcp_runtime: ^1.0.0-beta.1
+  mcp_schema_annotations: ^1.0.0-beta.1
+  mcp_schema_runtime: ^1.0.0-beta.1
 
 dev_dependencies:
   mcp_schema_generator: ^1.0.0-beta.1
@@ -33,8 +33,8 @@ dev_dependencies:
 1. Annotate your server class and methods.
 
 ```dart
-import 'package:mcp_annotations/mcp_annotations.dart';
-import 'package:mcp_runtime/mcp_runtime.dart';
+import 'package:mcp_schema_annotations/mcp_schema_annotations.dart';
+import 'package:mcp_schema_runtime/mcp_schema_runtime.dart';
 
 part 'server.g.dart'; // The generated file
 

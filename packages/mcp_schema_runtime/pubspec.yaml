@@ -1,4 +1,4 @@
-name: mcp_runtime
+name: mcp_schema_runtime
 resolution: workspace
 description: Runtime metadata models and types for the Model Context Protocol (MCP) schema generator.
 version: 1.0.0-beta.1

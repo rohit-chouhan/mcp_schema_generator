@@ -4,7 +4,7 @@ import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/dart/constant/value.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
-import 'package:mcp_annotations/mcp_annotations.dart';
+import 'package:mcp_schema_annotations/mcp_schema_annotations.dart';
 
 class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
   @override
@@ -42,7 +42,7 @@ class McpServerGenerator extends GeneratorForAnnotation<McpServer> {
 
   DartObject? _getAnnotation(Element element, String annotationName) {
     final checker = TypeChecker.fromUrl(
-      'package:mcp_annotations/src/mcp_annotations_base.dart#$annotationName',
+      'package:mcp_schema_annotations/src/mcp_schema_annotations_base.dart#$annotationName',
     );
     return checker.firstAnnotationOf(element);
   }

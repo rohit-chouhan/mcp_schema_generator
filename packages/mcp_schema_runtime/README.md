@@ -1,7 +1,7 @@
-# mcp_runtime
+# mcp_schema_runtime
 
-[![Pub Version](https://img.shields.io/pub/v/mcp_runtime)](https://pub.dev/packages/mcp_runtime)
-[![Pub Likes](https://img.shields.io/pub/likes/mcp_runtime)](https://pub.dev/packages/mcp_runtime)
+[![Pub Version](https://img.shields.io/pub/v/mcp_schema_runtime)](https://pub.dev/packages/mcp_schema_runtime)
+[![Pub Likes](https://img.shields.io/pub/likes/mcp_schema_runtime)](https://pub.dev/packages/mcp_schema_runtime)
 [![GitHub Issues](https://img.shields.io/github/issues/rohit-chouhan/mcp_schema_generator)](https://github.com/rohit-chouhan/mcp_schema_generator/issues)
 
 Runtime metadata models used by MCP Schema Generator.
@@ -10,7 +10,7 @@ Runtime metadata models used by MCP Schema Generator.
 
 ```yaml
 dependencies:
-  mcp_runtime: ^1.0.0-beta.1
+  mcp_schema_runtime: ^1.0.0-beta.1
 ```
 
 ## Included Types

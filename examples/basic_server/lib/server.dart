@@ -1,5 +1,5 @@
-import 'package:mcp_annotations/mcp_annotations.dart';
-import 'package:mcp_runtime/mcp_runtime.dart';
+import 'package:mcp_schema_annotations/mcp_schema_annotations.dart';
+import 'package:mcp_schema_runtime/mcp_schema_runtime.dart';
 
 part 'server.g.dart';
 

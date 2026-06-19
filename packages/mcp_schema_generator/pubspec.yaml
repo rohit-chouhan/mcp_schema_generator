@@ -15,8 +15,8 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
-  mcp_annotations: ^1.0.0-beta.1
-  mcp_runtime: ^1.0.0-beta.1
+  mcp_schema_annotations: ^1.0.0-beta.1
+  mcp_schema_runtime: ^1.0.0-beta.1
   source_gen: ^4.2.3
   analyzer: ^10.2.0
   build: ^4.0.6

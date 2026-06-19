@@ -1,5 +1,5 @@
 import 'package:source_gen_test/annotations.dart';
-import 'package:mcp_annotations/mcp_annotations.dart';
+import 'package:mcp_schema_annotations/mcp_schema_annotations.dart';
 
 enum Role { admin, user }
 
