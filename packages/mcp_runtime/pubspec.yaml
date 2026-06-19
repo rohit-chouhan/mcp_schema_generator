@@ -1,6 +1,6 @@
 name: mcp_runtime
 resolution: workspace
-description: A starting point for Dart libraries or applications.
+description: Runtime metadata models and types for the Model Context Protocol (MCP) schema generator.
 version: 1.0.0-beta.1
 repository: https://github.com/rohit-chouhan/mcp_schema_generator
 issue_tracker: https://github.com/rohit-chouhan/mcp_schema_generator/issues
