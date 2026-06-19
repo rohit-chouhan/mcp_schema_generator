@@ -410,8 +410,8 @@
       "languageVersion": "3.8"
     },
     {
-      "name": "mcp_annotations",
-      "rootUri": "../packages/mcp_annotations",
+      "name": "mcp_schema_annotations",
+      "rootUri": "../packages/mcp_schema_annotations",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
@@ -422,8 +422,8 @@
       "languageVersion": "3.9"
     },
     {
-      "name": "mcp_runtime",
-      "rootUri": "../packages/mcp_runtime",
+      "name": "mcp_schema_runtime",
+      "rootUri": "../packages/mcp_schema_runtime",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },

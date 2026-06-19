@@ -1,10 +1,10 @@
 {
   "roots": [
     "basic_server",
-    "mcp_annotations",
-    "mcp_runtime",
+    "mcp_schema_annotations",
     "mcp_schema_generator",
-    "mcp_schema_generator_workspace"
+    "mcp_schema_generator_workspace",
+    "mcp_schema_runtime"
   ],
   "packages": [
     {
@@ -14,7 +14,7 @@
       "devDependencies": []
     },
     {
-      "name": "mcp_annotations",
+      "name": "mcp_schema_annotations",
       "version": "1.0.0-beta.1",
       "dependencies": [
         "meta"
@@ -32,8 +32,8 @@
         "build",
         "code_builder",
         "dart_style",
-        "mcp_annotations",
-        "mcp_runtime",
+        "mcp_schema_annotations",
+        "mcp_schema_runtime",
         "source_gen"
       ],
       "devDependencies": [
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "mcp_runtime",
+      "name": "mcp_schema_runtime",
       "version": "1.0.0-beta.1",
       "dependencies": [
         "collection"
@@ -58,8 +58,8 @@
       "name": "basic_server",
       "version": "1.0.0",
       "dependencies": [
-        "mcp_annotations",
-        "mcp_runtime"
+        "mcp_schema_annotations",
+        "mcp_schema_runtime"
       ],
       "devDependencies": [
         "build_runner",
